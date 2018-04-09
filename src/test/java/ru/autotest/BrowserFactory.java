@@ -2,7 +2,6 @@ package ru.autotest;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public enum  BrowserFactory {
@@ -10,12 +9,6 @@ public enum  BrowserFactory {
         public WebDriver create() {
             updateProperty("chrome");
             return new ChromeDriver();
-        }
-    },
-    Edge {
-        public WebDriver create() {
-            updateProperty("Edge");
-            return new EdgeDriver();
         }
     },
     firefox {

@@ -8,10 +8,11 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class BaseRunner {
-    public static ThreadLocal<WebDriver> tl = new ThreadLocal<>();
-    public WebDriver driver;
-    public String browserName = System.getProperty("browser");
-    public String baseUrl;
+
+    private static ThreadLocal<WebDriver> tl = new ThreadLocal<>();
+    WebDriver driver;
+    private String browserName = System.getProperty("browser");
+    String baseUrl;
 
 
     @BeforeTest

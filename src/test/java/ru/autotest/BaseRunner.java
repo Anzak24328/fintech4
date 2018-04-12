@@ -23,7 +23,7 @@ public class BaseRunner {
             tl.set(driver);
         }
         driver.manage().window().maximize();
-        baseUrl = "https://www.tinkoff.ru/";
+        baseUrl = "https://www.google.ru/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {

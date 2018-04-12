@@ -19,9 +19,9 @@ public class TMobileWebTest extends BaseRunner {
         driver.findElement(By.cssSelector("#lst-ib")).sendKeys("tinkoff");
         driver.findElement(By.cssSelector("#lst-ib")).sendKeys(Keys.ENTER);
         driver.findElement(By.cssSelector("a[href='https://www.tinkoff.ru/']")).click();
-        ArrayList<String> tabs2 = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabs2.get(0)).close();
-        driver.switchTo().window(tabs2.get(1));
+        ArrayList<String> tab = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tab.get(0)).close();
+        driver.switchTo().window(tab.get(1));
         driver.findElement(By.cssSelector("div[id=x48761] div:nth-child(6)")).click();
         driver.findElement(By.cssSelector("#search-and-pay-container input[data-qa-file='SearchInput']")).click();
         driver.findElement(By.cssSelector("#search-and-pay-container input[data-qa-file='SearchInput']")).sendKeys("Тинькофф мобайл");
@@ -42,9 +42,9 @@ public class TMobileWebTest extends BaseRunner {
         driver.findElement(By.xpath("//*[@id='lst-ib']")).sendKeys("tinkoff");
         driver.findElement(By.xpath("//*[@id='lst-ib']")).sendKeys(Keys.ENTER);
         driver.findElement(By.xpath("//*[@href='https://www.tinkoff.ru/']")).click();
-        ArrayList<String> tabs2 = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabs2.get(0)).close();
-        driver.switchTo().window(tabs2.get(1));
+        ArrayList<String> tab = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tab.get(0)).close();
+        driver.switchTo().window(tab.get(1));
         driver.findElement(By.xpath("//*[@id='x48761']//div[6]")).click();
         driver.findElement(By.xpath("//*[@id='search-and-pay-container']//input[@data-qa-file='SearchInput']")).click();
         driver.findElement(By.xpath("//*[@id='search-and-pay-container']//input[contains(@data-qa-file,'SearchInput')]")).sendKeys("Тинькофф мобайл");

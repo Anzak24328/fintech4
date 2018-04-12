@@ -13,6 +13,7 @@ public class TMobileWebTest extends BaseRunner {
 
     @Test
     public void testTestCaseByCSS() {
+        System.out.println("Запуск TestCaseByCSS");
         driver.get(baseUrl);
         driver.findElement(By.cssSelector("#lst-ib")).click();
         driver.findElement(By.cssSelector("#lst-ib")).sendKeys("tinkoff");
@@ -31,6 +32,29 @@ public class TMobileWebTest extends BaseRunner {
         driver.findElement(By.cssSelector("button[data-qa-file='UIButton'] > h2[data-qa-file='UIButton']")).click();
         assertEquals(driver.findElement(By.cssSelector("div[class*='phone'] div[data-qa-file='FormFieldWrapper'] > div[data-qa-file='UIFormRowError']")).getText(), "Поле обязательное");
         assertEquals(driver.findElement(By.cssSelector("div[class*='amount'] div[data-qa-file='FormFieldWrapper'] > div[data-qa-file='UIFormRowError']")).getText(), "Минимум — 10 ₽");
+    }
+
+    @Test
+    public void testTestCaseByXPath() {
+        System.out.println("Запуск TestCaseByXPath");
+        driver.get(baseUrl);
+        driver.findElement(By.xpath("//*[@id='lst-ib']")).click();
+        driver.findElement(By.xpath("//*[@id='lst-ib']")).sendKeys("tinkoff");
+        driver.findElement(By.xpath("//*[@id='lst-ib']")).sendKeys(Keys.ENTER);
+        driver.findElement(By.xpath("//*[@href='https://www.tinkoff.ru/']")).click();
+        ArrayList<String> tabs2 = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(0)).close();
+        driver.switchTo().window(tabs2.get(1));
+        driver.findElement(By.xpath("//*[@id='x48761']//div[6]")).click();
+        driver.findElement(By.xpath("//*[@id='search-and-pay-container']//input[@data-qa-file='SearchInput']")).click();
+        driver.findElement(By.xpath("//*[@id='search-and-pay-container']//input[contains(@data-qa-file,'SearchInput')]")).sendKeys("Тинькофф мобайл");
+        driver.findElement(By.xpath("//*[@id='search-and-pay-container']//div[contains(@style,'tinkoff-mobile.png')]")).click();
+        new WebDriverWait(driver, 5).until(d -> d.getTitle().equals("Оплатить мобильную связь"));
+        driver.findElement(By.xpath("//div[@data-qa-file='StatelessInput']/input[@data-qa-node='ValueComponent']")).click();
+        driver.findElement(By.xpath("//div[@data-qa-file='StatelessInput']/input[@data-qa-node='ValueComponent']")).sendKeys("5");
+        driver.findElement(By.xpath("//button[@data-qa-file='UIButton']/h2[@data-qa-file='UIButton']")).click();
+        assertEquals(driver.findElement(By.xpath("//div[contains(@class,'phone')]//div[@data-qa-file='FormFieldWrapper']/div[@data-qa-file='UIFormRowError']")).getText(), "Поле обязательное");
+        assertEquals(driver.findElement(By.xpath("//div[contains(@class,'amount')]//div[@data-qa-file='FormFieldWrapper']/div[@data-qa-file='UIFormRowError']")).getText(), "Минимум — 10 ₽");
     }
 
 }

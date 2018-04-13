@@ -12,13 +12,14 @@ import static org.testng.Assert.assertEquals;
 public class TMobileWebTest extends BaseRunner {
 
     @Test
-    public void testTestCaseByCSS() {
+    public void testCaseByCSS() throws InterruptedException {
         System.out.println("Запуск TestCaseByCSS");
         driver.get(baseUrl);
         driver.findElement(By.cssSelector("#lst-ib")).click();
         driver.findElement(By.cssSelector("#lst-ib")).sendKeys("tinkoff");
         driver.findElement(By.cssSelector("#lst-ib")).sendKeys(Keys.ENTER);
         driver.findElement(By.cssSelector("a[href='https://www.tinkoff.ru/']")).click();
+        Thread.sleep(500);
         ArrayList<String> tab = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tab.get(0)).close();
         driver.switchTo().window(tab.get(1));
@@ -35,13 +36,14 @@ public class TMobileWebTest extends BaseRunner {
     }
 
     @Test
-    public void testTestCaseByXPath() {
+    public void testCaseByXPath() throws InterruptedException {
         System.out.println("Запуск TestCaseByXPath");
         driver.get(baseUrl);
         driver.findElement(By.xpath("//*[@id='lst-ib']")).click();
         driver.findElement(By.xpath("//*[@id='lst-ib']")).sendKeys("tinkoff");
         driver.findElement(By.xpath("//*[@id='lst-ib']")).sendKeys(Keys.ENTER);
         driver.findElement(By.xpath("//*[@href='https://www.tinkoff.ru/']")).click();
+        Thread.sleep(500);
         ArrayList<String> tab = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tab.get(0)).close();
         driver.switchTo().window(tab.get(1));
@@ -56,5 +58,7 @@ public class TMobileWebTest extends BaseRunner {
         assertEquals(driver.findElement(By.xpath("//div[contains(@class,'phone')]//div[@data-qa-file='FormFieldWrapper']/div[@data-qa-file='UIFormRowError']")).getText(), "Поле обязательное");
         assertEquals(driver.findElement(By.xpath("//div[contains(@class,'amount')]//div[@data-qa-file='FormFieldWrapper']/div[@data-qa-file='UIFormRowError']")).getText(), "Минимум — 10 ₽");
     }
+
+
 
 }

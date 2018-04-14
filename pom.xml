@@ -52,12 +52,14 @@
                     <!--соотношение потоков на cpu (Default true)-->
                     <perCoreThreadCount>false</perCoreThreadCount>
                     <!--макисмальное число потоков-->
-                    <threadCount>1</threadCount>
+                    <threadCount>2</threadCount>
 
                     <!--if parallel All = threadCount, classes = threadCountClasses, methods = threadCountMethods-->
                     <!--<useUnlimitedThreads>true</useUnlimitedThreads>-->
                 </configuration>
             </plugin>
+
+
         </plugins>
     </build>
 

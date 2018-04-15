@@ -25,7 +25,6 @@ public class BaseRunner {
         driver.manage().window().maximize();
         baseUrl = "https://www.google.ru/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             driver.quit();
             driver = null;
